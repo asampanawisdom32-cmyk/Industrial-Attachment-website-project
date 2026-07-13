@@ -530,10 +530,18 @@ html { scroll-behavior: smooth; }
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding: 120px 24px 80px;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: auto;
+    padding: 100px 20px 60px;
+  }
 }
 
 .home-hero-bg {
@@ -1140,7 +1148,7 @@ html { scroll-behavior: smooth; }
     padding: 12px 20px 20px;
     gap: 4px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    z-index: 100;
+    z-index: 101;
   }
 
   .home-nav-links.open {
@@ -1149,13 +1157,17 @@ html { scroll-behavior: smooth; }
 
   .home-nav-links a:not(.home-nav-btn) {
     display: block;
-    padding: 12px 16px;
+    padding: 14px 16px;
     border-radius: 8px;
     text-align: left;
     font-size: 0.95rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 
-  .home-nav-links a:not(.home-nav-btn):hover {
+  .home-nav-links a:not(.home-nav-btn):hover,
+  .home-nav-links a:not(.home-nav-btn):active {
     background: rgba(255,255,255,0.06);
   }
 
@@ -1163,10 +1175,10 @@ html { scroll-behavior: smooth; }
     width: 100%;
     text-align: center;
     margin-top: 4px;
-  }
-
-  .home-nav {
-    position: relative;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .home-features {
@@ -1220,14 +1232,36 @@ html { scroll-behavior: smooth; }
   }
 
   .home-hero {
-    padding-top: 120px;
+    padding-top: 100px;
+    min-height: auto;
+    padding-bottom: 60px;
   }
 
   .home-hero-visual {
     width: 240px;
   }
 
+  .home-section {
+    padding: 60px 16px;
+  }
+
+  .home-section-alt {
+    padding: 60px 16px;
+  }
+
   .home-footer {
     padding: 24px 16px;
+  }
+
+  .home-cta {
+    padding: 60px 16px;
+  }
+
+  .home-stats-bar {
+    padding: 24px 16px;
+  }
+
+  .home-stat-number {
+    font-size: 2rem;
   }
 }

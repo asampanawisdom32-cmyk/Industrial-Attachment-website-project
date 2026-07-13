@@ -5260,3 +5260,170 @@ body[data-page="admin"] .hero:first-child .hero-avatar {
 [data-theme="dark"] .report-attach-doc-icon {
   background: rgba(37,99,235,0.12);
 }
+
+/* ============================================================
+   17. Mobile Responsive Overrides for Dashboard Components
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Profile hero */
+  .profile-hero {
+    padding: 24px 20px;
+  }
+
+  .profile-hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-hero-text h2 {
+    font-size: 1.25rem;
+  }
+
+  .profile-hero-role-badge {
+    margin-top: 8px;
+  }
+
+  /* Evals hero */
+  .evals-hero {
+    padding: 24px 20px;
+  }
+
+  .evals-hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .evals-hero-text h2 {
+    font-size: 1.25rem;
+  }
+
+  /* Report form */
+  .report-form-card {
+    padding: 16px;
+  }
+
+  .report-upload-zone {
+    padding: 24px 16px;
+  }
+
+  /* Modal adjustments */
+  .modal-premium {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-premium-body {
+    padding: 16px;
+  }
+
+  /* Report card */
+  .report-card {
+    padding: 16px;
+  }
+
+  .report-card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .report-card-actions {
+    width: 100%;
+  }
+
+  .report-card-actions .btn {
+    flex: 1;
+  }
+
+  /* Category grid */
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hero card */
+  .hero {
+    flex-direction: column;
+    padding: 24px 20px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-meta {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-action {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Quick stats */
+  .quick-stats {
+    flex-direction: column;
+  }
+
+  /* Table horizontal scroll */
+  .premium-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -12px;
+    padding: 0 12px;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    padding: 12px 16px;
+  }
+
+  /* Form premium */
+  .form-premium {
+    padding: 16px;
+  }
+
+  .form-premium .profile-edit-form {
+    grid-template-columns: 1fr;
+  }
+
+  /* Report file items */
+  .report-file-item {
+    padding: 10px 12px;
+  }
+
+  /* Attachment grid */
+  .report-attach-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .category-card {
+    padding: 14px 12px;
+  }
+
+  .hero-action {
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
+
+  .report-card-title {
+    font-size: 0.92rem;
+  }
+
+  .report-card-content {
+    font-size: 0.78rem;
+  }
+}

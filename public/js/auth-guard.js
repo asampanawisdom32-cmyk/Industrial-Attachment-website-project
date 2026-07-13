@@ -97,10 +97,14 @@ function initLogoutLinks() {
 /**
  * Page transition — intercept internal navigation links for a smooth exit animation
  * before the browser navigates to the next page.
+ * Disabled on touch/mobile devices to avoid breaking scroll and tap.
  */
 function initPageTransitions() {
   var content = document.querySelector('.page-content');
   if (!content) return;
+
+  // Skip on touch devices — the delayed navigation breaks mobile scroll & tap
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
 
   // Listen to clicks on all internal links within the app
   document.addEventListener('click', function (e) {
@@ -166,10 +170,22 @@ function initSidebarToggle() {
 
   function isMobile() { return window.innerWidth <= 1024; }
 
+  var scrollPos = 0;
+
   function setSidebarOpen(isOpen) {
+    if (isMobile() && isOpen) {
+      scrollPos = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = -scrollPos + 'px';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollPos);
+    }
     sidebar.classList.toggle('open', isOpen);
     if (overlay) overlay.classList.toggle('active', isOpen);
-    document.body.classList.toggle('sidebar-open', isOpen && isMobile());
   }
 
   // Restore saved state on page load (desktop only)

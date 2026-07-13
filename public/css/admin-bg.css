@@ -210,6 +210,14 @@
   box-shadow: 0 0 0 1px rgba(255,255,255,0.06), var(--shadow-lg);
 }
 
+/* Mobile: ensure app-shell is interactive over background */
+@media (max-width: 1024px) {
+  .admin-bg-wrap ~ .app-shell .main-panel,
+  .admin-particles ~ .app-shell .main-panel {
+    box-shadow: none;
+  }
+}
+
 /* ── Page Enter Animation ── */
 @keyframes adminPageEnter {
   from { opacity: 0; transform: translateY(16px); }

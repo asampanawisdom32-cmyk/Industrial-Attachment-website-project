@@ -217,11 +217,12 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
-  overscroll-behavior-y: none;
 }
 
 body.sidebar-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -963,11 +964,13 @@ img {
   background: rgba(0, 0, 0, 0.3);
   z-index: 99;
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-base);
 }
 
 .sidebar-overlay.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* ============================================================
@@ -988,19 +991,21 @@ img {
 
   .sidebar-overlay {
     display: block;
+    pointer-events: none;
   }
 
   .sidebar-overlay.active {
     display: block;
+    pointer-events: auto;
   }
 
   .main-panel {
     margin-left: 0 !important;
     margin: 0 !important;
-    max-height: 100vh;
-    max-height: 100dvh;
+    max-height: none;
     border-radius: 0;
     padding: 0 16px;
+    overflow-y: visible;
   }
 
   .page-header {
@@ -1028,10 +1033,10 @@ img {
 
   .main-panel {
     margin: 0;
-    max-height: 100vh;
-    max-height: 100dvh;
+    max-height: none;
     border-radius: 0;
     padding: 0 12px;
+    overflow-y: visible;
   }
 
   .sidebar-brand {
@@ -1261,17 +1266,44 @@ h3 { font-size: clamp(1.05rem, 1.5vw, 1.375rem); }
    14. Mobile & Touch Optimizations
    ============================================================ */
 
+/* Mobile app-shell: allow natural scrolling */
+@media (max-width: 1024px) {
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: none;
+    overflow: visible;
+    flex-direction: column;
+  }
+
+  .main-panel {
+    flex: 1;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-y: visible;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+  }
+}
+
 /* Touch-friendly tap targets */
 @media (pointer: coarse) {
   button, a, input, select, textarea,
   .nav-item, .btn, .quick-link-item,
-  .hero-action-btn, .notification-btn {
+  .hero-action-btn, .notification-btn,
+  .sidebar-toggle-btn, .filter-chip,
+  .report-item-header, .eval-card-header,
+  .week-block, .home-btn {
     min-height: 44px;
     min-width: 44px;
   }
 
   .nav-item { padding: 14px 20px; }
   .btn { padding: 12px 20px; }
+  .sidebar-toggle-btn { width: 48px; height: 48px; }
+  .notification-btn { width: 48px; height: 48px; }
 }
 
 /* Reduce hover effects on touch devices (no sticky hover) */
@@ -1286,6 +1318,8 @@ h3 { font-size: clamp(1.05rem, 1.5vw, 1.375rem); }
 @media (max-width: 480px) {
   .main-panel {
     padding: 0 12px;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .page-header {
