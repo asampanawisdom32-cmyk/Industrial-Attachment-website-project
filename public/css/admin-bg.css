@@ -419,3 +419,27 @@
     transparent 100%
   );
 }
+
+/* ── Mobile: hide heavy particles for performance ── */
+@media (max-width: 768px) {
+  .admin-particles {
+    display: none;
+  }
+}
+
+/* ── Respect reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  .admin-bg-img {
+    animation: none !important;
+  }
+  .admin-particle {
+    animation: none !important;
+  }
+  .admin-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .admin-shimmer::after {
+    animation: none !important;
+  }
+}

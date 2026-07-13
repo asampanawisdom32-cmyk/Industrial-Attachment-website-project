@@ -40,5 +40,44 @@
       }
     })();
   </script>
+
+  <!-- Mobile optimizations -->
+  <script>
+    (function() {
+      /* Table scroll hint on mobile */
+      function initTableScrollHints() {
+        document.querySelectorAll('.table-premium-wrap').forEach(function(wrap) {
+          function checkScroll() {
+            if (wrap.scrollWidth > wrap.clientWidth) {
+              wrap.classList.add('scrollable');
+            } else {
+              wrap.classList.remove('scrollable');
+            }
+          }
+          checkScroll();
+          wrap.addEventListener('scroll', checkScroll);
+          window.addEventListener('resize', checkScroll);
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTableScrollHints);
+      } else {
+        initTableScrollHints();
+      }
+      /* Re-run after dynamic content loads */
+      setTimeout(initTableScrollHints, 1500);
+      setTimeout(initTableScrollHints, 3000);
+
+      /* Close sidebar on nav click (mobile) */
+      document.querySelectorAll('.nav-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+          var sidebar = document.querySelector('[data-sidebar]');
+          var overlay = document.querySelector('[data-sidebar-overlay]');
+          if (sidebar) sidebar.classList.remove('open');
+          if (overlay) overlay.classList.remove('active');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

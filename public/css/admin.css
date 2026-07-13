@@ -156,6 +156,36 @@
   }
 }
 
+@media (max-width: 768px) {
+  .admin-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+  .admin-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .action-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .modal-card {
+    width: 95% !important;
+    max-width: none;
+    margin: 5vh auto;
+  }
+}
+
 @media (max-width: 640px) {
   .admin-stats-grid {
     grid-template-columns: 1fr;

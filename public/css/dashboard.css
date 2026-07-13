@@ -4201,6 +4201,70 @@ input[type="range"]::-webkit-slider-thumb {
   .search-input { margin: 0 16px 12px; }
   .grid-4 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
+
+  /* Students page hero */
+  .students-hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .students-hero-left { text-align: center; }
+  .students-hero-actions { justify-content: center; flex-wrap: wrap; }
+
+  /* Table horizontal scroll hint */
+  .table-premium-wrap {
+    position: relative;
+    border-radius: 12px;
+  }
+  .table-premium-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 32px;
+    background: linear-gradient(to left, rgba(15,23,42,0.8), transparent);
+    pointer-events: none;
+    border-radius: 0 12px 12px 0;
+    opacity: 0;
+  }
+  .table-premium-wrap.scrollable::after {
+    opacity: 1;
+  }
+
+  /* Modal fullscreen on mobile */
+  .modal-premium {
+    width: 95% !important;
+    max-height: 90vh;
+    margin: 5vh auto;
+  }
+
+  /* Search/filter on mobile */
+  .search-bar-wrap {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Attendance grid compact on mobile */
+  .att-grid {
+    gap: 4px;
+  }
+  .att-grid .att-cell {
+    width: 28px;
+    height: 28px;
+    font-size: 0.55rem;
+  }
+
+  /* Progress bar wider on mobile */
+  .progress-bar-wrap {
+    width: 100%;
+  }
+}
+
+/* Tiny phones */
+@media (max-width: 380px) {
+  .hero { padding: 16px; }
+  .hero-greeting h2 { font-size: 1rem; }
+  .stat-value { font-size: 1.3rem; }
+  .stat-label { font-size: 0.65rem; }
 }
 
 /* ============================================================

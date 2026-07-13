@@ -218,5 +218,22 @@
     }, { passive: true });
   }
 
+  /* ── Mobile Nav Toggle ── */
+  const navToggle = document.getElementById('home-nav-toggle');
+  const navLinks = document.getElementById('home-nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+      }
+    });
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  }
+
   console.log('🏫 BTU Premium Animations & Automation active');
 })();

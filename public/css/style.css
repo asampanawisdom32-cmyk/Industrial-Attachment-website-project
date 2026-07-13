@@ -1072,6 +1072,10 @@
 }
 
 @media (max-width: 480px) {
+  body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
   .login-brand-panel {
     padding: 24px 20px 16px;
   }
