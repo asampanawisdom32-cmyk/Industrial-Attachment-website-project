@@ -3,36 +3,44 @@ const path = require('path');
 require('dotenv').config();
 
 // Initialize Firebase Admin SDK
-// You need to download your service account key from Firebase Console
-// Project Settings > Service Accounts > Generate New Private Key
 let serviceAccount;
 let initialized = false;
 
-try {
-  serviceAccount = require(path.join(__dirname, '../serviceAccountKey.json'));
-} catch (error) {
-  try {
-    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
-  } catch (_) {
-    serviceAccount = {
-      type: process.env.FIREBASE_TYPE,
-      project_id: process.env.FIREBASE_PROJECT_ID,
-      private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
-      private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      client_email: process.env.FIREBASE_CLIENT_EMAIL,
-      client_id: process.env.FIREBASE_CLIENT_ID,
-      auth_uri: process.env.FIREBASE_AUTH_URI,
-      token_uri: process.env.FIREBASE_TOKEN_URI,
-      auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
-      client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
-    };
+// Helper: try to load service account from env or file
+function loadServiceAccount() {
+  // 1. Try FIREBASE_SERVICE_ACCOUNT env var (JSON string)
+  const raw = process.env.FIREBASE_SERVICE_ACCOUNT;
+  if (raw && raw.trim().length > 0) {
+    try {
+      const parsed = JSON.parse(raw);
+      console.log('Firebase service account loaded from FIREBASE_SERVICE_ACCOUNT env var.');
+      return parsed;
+    } catch (e) {
+      console.error('FIREBASE_SERVICE_ACCOUNT env var is set but invalid JSON:', e.message);
+      console.error('First 100 chars:', raw.substring(0, 100));
+    }
   }
+
+  // 2. Try serviceAccountKey.json file (local dev)
+  try {
+    const sa = require(path.join(__dirname, '../serviceAccountKey.json'));
+    console.log('Firebase service account loaded from serviceAccountKey.json file.');
+    return sa;
+  } catch (_) {}
+
+  // 3. Not found
+  console.error('No Firebase service account found.');
+  console.error('Set FIREBASE_SERVICE_ACCOUNT env var or place serviceAccountKey.json in project root.');
+  return null;
 }
 
-// Only initialize if we have either service-account credentials or default runtime credentials
+serviceAccount = loadServiceAccount();
+
+// Only initialize if we have credentials
 const hasServiceAccountCredentials = serviceAccount &&
-  (serviceAccount.project_id || process.env.FIREBASE_PROJECT_ID) &&
-  (serviceAccount.client_email || serviceAccount.private_key);
+  serviceAccount.project_id &&
+  serviceAccount.client_email &&
+  serviceAccount.private_key;
 
 let db = null;
 let auth = null;
@@ -48,27 +56,19 @@ if (!admin.apps.length) {
 
     if (hasServiceAccountCredentials) {
       appOptions.credential = admin.credential.cert(serviceAccount);
+      console.log('Firebase Admin SDK initialized with service account credentials.');
     } else {
-      appOptions.credential = admin.credential.applicationDefault();
+      console.warn('No service account credentials found. Firebase will have limited functionality.');
+      appOptions.projectId = projectId || 'industrial-attachment-website';
     }
 
     admin.initializeApp(appOptions);
     db = admin.firestore();
     auth = admin.auth();
     initialized = true;
-    console.log('Firebase Admin SDK initialized successfully.');
   } catch (initError) {
-    console.warn('Firebase Admin SDK initialization failed:', initError.message);
-    console.warn('The application will run with limited functionality. Add serviceAccountKey.json or deploy with default credentials.');
+    console.error('Firebase Admin SDK initialization failed:', initError.message);
   }
-}
-
-if (!initialized && !admin.apps.length) {
-  console.warn('');
-  console.warn('⚠️  Firebase Admin SDK not initialized.');
-  console.warn('   To enable full functionality, place your serviceAccountKey.json');
-  console.warn('   in the project root directory, or deploy with default Firebase credentials.');
-  console.warn('');
 }
 
 function getDb() {
