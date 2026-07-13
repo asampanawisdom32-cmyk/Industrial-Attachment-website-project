@@ -318,7 +318,7 @@
   padding: 13px 16px 13px 44px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  background: #FAFAFA;
+  background: var(--input-bg);
   color: var(--text);
   font-size: 16px;
   transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
@@ -329,7 +329,7 @@
 .premium-input-wrap select:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-  background: #fff;
+  background: var(--surface);
 }
 
 .premium-input-wrap input::placeholder {
@@ -506,15 +506,15 @@
 }
 
 .auth-message-error {
-  background: #fef2f2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  background: rgba(220, 38, 38, 0.10);
+  color: #ef4444;
+  border: 1px solid rgba(220, 38, 38, 0.25);
 }
 
 .auth-message-success {
-  background: #f0fdf4;
-  color: #166534;
-  border: 1px solid #bbf7d0;
+  background: rgba(34, 197, 94, 0.10);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.25);
 }
 
 /* ===== Login Form Footer ===== */
@@ -617,8 +617,8 @@
 }
 
 .forgot-icon-success {
-  background: #d1fae5;
-  color: #059669;
+  background: rgba(34, 197, 94, 0.14);
+  color: #22c55e;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -1042,8 +1042,8 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #d1fae5;
-  color: #059669;
+  background: rgba(34, 197, 94, 0.14);
+  color: #22c55e;
   display: grid;
   place-items: center;
   font-size: 0.7rem;
@@ -1093,7 +1093,7 @@
   flex: 1;
   height: 4px;
   border-radius: 2px;
-  background: #e8e4dc;
+  background: var(--border);
   transition: background 0.3s;
 }
 

@@ -2482,8 +2482,8 @@
   flex: 1;
   padding: 12px 16px;
   border: none;
-  background: rgba(255,255,255,0.03);
-  color: var(--text-secondary, #94a3b8);
+  background: var(--surface-hover, rgba(0,0,0,0.02));
+  color: var(--text-secondary, #64748b);
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
@@ -2492,25 +2492,25 @@
   font-family: 'Inter', sans-serif;
 }
 .sup-tab:hover {
-  background: rgba(255,255,255,0.06);
-  color: var(--text-primary, #e2e8f0);
+  background: var(--card-border, rgba(0,0,0,0.04));
+  color: var(--text-primary, #1e293b);
 }
 .sup-tab.active {
+  background: var(--primary-soft, rgba(37,99,235,0.06));
+  color: var(--primary, #2563eb);
+  border-bottom-color: var(--primary, #2563eb);
+}
+[data-theme="dark"] .sup-tab {
+  background: rgba(255,255,255,0.03);
+  color: #94a3b8;
+}
+[data-theme="dark"] .sup-tab:hover {
+  background: rgba(255,255,255,0.06);
+  color: #e2e8f0;
+}
+[data-theme="dark"] .sup-tab.active {
   background: rgba(37,99,235,0.08);
   color: #60a5fa;
-  border-bottom-color: #2563eb;
-}
-[data-theme="light"] .sup-tab {
-  background: rgba(0,0,0,0.02);
-  color: #64748b;
-}
-[data-theme="light"] .sup-tab:hover {
-  background: rgba(0,0,0,0.04);
-  color: #1e293b;
-}
-[data-theme="light"] .sup-tab.active {
-  background: rgba(37,99,235,0.06);
-  color: #2563eb;
   border-bottom-color: #2563eb;
 }
 
@@ -5303,6 +5303,33 @@ body[data-page="admin"] .hero:first-child .hero-avatar {
 [data-theme="dark"] .report-attach-doc-icon {
   background: rgba(37,99,235,0.12);
 }
+
+/* ============================================================
+   Dark Mode — Fix hardcoded rgba(0,0,0,...) backgrounds
+   ============================================================ */
+[data-theme="dark"] .week-block { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .premium-table tr:hover td { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .category-card { background: rgba(255,255,255,0.04); }
+[data-theme="dark"] .report-item { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .funnel-track { background: rgba(255,255,255,0.04); }
+[data-theme="dark"] .progress-thin { background: rgba(255,255,255,0.06); }
+[data-theme="dark"] .perf-bar-track { background: rgba(255,255,255,0.06); }
+[data-theme="dark"] .progress-cell-bar { background: rgba(255,255,255,0.06); }
+[data-theme="dark"] .table tr:hover td { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .table-premium tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+[data-theme="dark"] .report-card-feedback-block { background: rgba(139,92,246,0.06); }
+
+/* Dark mode status colors — boost contrast */
+[data-theme="dark"] .status-badge.is-success,
+[data-theme="dark"] .status-badge.is-approved,
+[data-theme="dark"] .status-badge.is-complete { color: #4ade80; }
+[data-theme="dark"] .status-badge.is-pending,
+[data-theme="dark"] .status-badge.is-submitted { color: #facc15; }
+[data-theme="dark"] .status-badge.is-overdue,
+[data-theme="dark"] .status-badge.is-rejected { color: #f87171; }
+
+[data-theme="dark"] .evals-hero { background: linear-gradient(135deg, #0A1628 0%, #111d35 50%, #0f1d35 100%); }
+[data-theme="dark"] .students-hero { background: linear-gradient(135deg, #0A1628 0%, #111d35 50%, #0f1d35 100%); }
 
 /* ============================================================
    17. Mobile Responsive Overrides for Dashboard Components

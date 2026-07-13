@@ -870,9 +870,9 @@ body.sidebar-collapsed .main-panel {
   color: var(--primary);
 }
 
-.notif-icon.success { background: #d1fae5; color: #059669; }
-.notif-icon.warning { background: #fef3c7; color: #d97706; }
-.notif-icon.error { background: #fee2e2; color: #dc2626; }
+.notif-icon.success { background: rgba(34, 197, 94, 0.14); color: #22c55e; }
+.notif-icon.warning { background: rgba(245, 158, 11, 0.14); color: #f59e0b; }
+.notif-icon.error { background: rgba(239, 68, 68, 0.14); color: #ef4444; }
 
 .notif-body {
   flex: 1;
