@@ -37,6 +37,9 @@ async function requireAuth() {
 function updateShellUser(user) {
   if (!user) return;
 
+  var safeName = (user.name || 'User').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  var safeRole = (user.role || '').replace(/_/g, ' ').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
   // Update sidebar profile
   const nameEl = document.getElementById('sidebar-profile-name');
   const roleEl = document.getElementById('sidebar-profile-role');
@@ -48,26 +51,25 @@ function updateShellUser(user) {
   // Update page title if on dashboard
   const subtitle = document.querySelector('.subtitle');
   if (subtitle) {
-    subtitle.innerHTML = `Welcome back, <strong>${user.name}</strong> &middot; <strong>${(user.role || '').replace(/_/g, ' ')}</strong>`;
+    subtitle.innerHTML = 'Welcome back, <strong>' + safeName + '</strong> &middot; <strong>' + safeRole + '</strong>';
   }
 
   // Inject user chip in sidebar footer
   const footer = document.querySelector('.sidebar-footer');
   if (footer) {
     const initial = (user.name || 'U').charAt(0).toUpperCase();
-    footer.innerHTML = `
-      <div class="user-chip">
-        <div class="user-avatar">${initial}</div>
-        <div class="user-info">
-          <div class="user-name">${user.name}</div>
-          <div class="user-role">${(user.role || '').replace(/_/g, ' ')}</div>
-        </div>
-      </div>
-      <a class="logout-btn" href="/logout" data-logout>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        Sign out
-      </a>
-    `;
+    footer.innerHTML =
+      '<div class="user-chip">' +
+        '<div class="user-avatar">' + initial + '</div>' +
+        '<div class="user-info">' +
+          '<div class="user-name">' + safeName + '</div>' +
+          '<div class="user-role">' + safeRole + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<a class="logout-btn" href="/logout" data-logout>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>' +
+        ' Sign out' +
+      '</a>';
     initLogoutLinks();
   }
 

@@ -4367,6 +4367,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Week block timeline dot pulse */
 .week-block::before {
+  content: '';
   box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
   animation: pulse-dot 2s ease-out infinite;
 }
@@ -4409,7 +4410,7 @@ input[type="range"]::-webkit-slider-thumb {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.report-item.expanded .report-item-expand-icon {
+.report-item.is-expanded .report-item-expand-icon {
   transform: rotate(180deg);
 }
 
@@ -5241,7 +5242,6 @@ body[data-page="admin"] .hero:first-child .hero-avatar {
 /* ============================================================
    15. Badge status colors
    ============================================================ */
-.badge-premium-draft,
 .badge-premium-draft {
   display: inline-flex;
   align-items: center;

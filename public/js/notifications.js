@@ -6,6 +6,11 @@
   var NOTIF_KEY = 'ia_notifications';
   var READ_KEY = 'ia_notifications_read';
 
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
   function getNotifications() {
     try { return JSON.parse(localStorage.getItem(NOTIF_KEY) || '[]'); } catch { return []; }
   }
@@ -58,8 +63,8 @@
       return '<div class="notification-item' + (isUnread ? ' unread' : '') + '" data-notif-id="' + n.id + '">' +
         '<div class="notif-icon ' + iconClass + '">' + icon + '</div>' +
         '<div class="notif-body">' +
-          '<p class="notif-title">' + (n.title || '') + '</p>' +
-          '<p class="notif-desc">' + (n.desc || '') + '</p>' +
+          '<p class="notif-title">' + escapeHtml(n.title || '') + '</p>' +
+          '<p class="notif-desc">' + escapeHtml(n.desc || '') + '</p>' +
           '<div class="notif-time">' + timeAgo(n.ts || Date.now()) + '</div>' +
         '</div>' +
       '</div>';

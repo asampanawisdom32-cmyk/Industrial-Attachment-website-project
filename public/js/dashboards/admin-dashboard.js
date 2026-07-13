@@ -147,19 +147,6 @@ async function loadAdminDashboard() {
 
       // ===== HERO =====
       '<div class="hero animate-in admin-reveal">' +
-        '<button class="hero-action-btn" id="sidebar-toggle" aria-label="Toggle sidebar">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>' +
-        '</button>' +
-        '<div style="position:relative">' +
-          '<button class="hero-action-btn" id="notification-btn" aria-label="Notifications">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>' +
-            '<span class="notification-dot" id="notification-dot"></span>' +
-          '</button>' +
-          '<div class="notification-dropdown" id="notification-dropdown" hidden>' +
-            '<div class="notification-dropdown-header"><h4>Notifications</h4><button class="notification-mark-read" id="notification-mark-all">Mark all read</button></div>' +
-            '<div class="notification-list" id="notification-list"></div>' +
-          '</div>' +
-        '</div>' +
         '<div class="hero-content">' +
           '<div class="hero-avatar">' + initial + '</div>' +
           '<div class="hero-greeting">' +
@@ -364,46 +351,6 @@ async function loadAdminDashboard() {
           '</li>' +
         '</ul>' +
       '</div>';
-
-    // Re-bind sidebar toggle (button rendered by JS)
-    var tb = document.getElementById('sidebar-toggle');
-    var sidebar = document.querySelector('.sidebar');
-    var overlay = document.querySelector('.sidebar-overlay');
-    if (tb && sidebar) {
-      function isMobile() { return window.innerWidth <= 1024; }
-      var scrollPos = 0;
-      function setSidebarOpen(isOpen) {
-        if (isMobile() && isOpen) {
-          scrollPos = window.scrollY;
-          document.body.style.position = 'fixed';
-          document.body.style.top = -scrollPos + 'px';
-          document.body.style.width = '100%';
-        } else {
-          document.body.style.position = '';
-          document.body.style.top = '';
-          document.body.style.width = '';
-          window.scrollTo(0, scrollPos);
-        }
-        sidebar.classList.toggle('open', isOpen);
-        if (overlay) overlay.classList.toggle('active', isOpen);
-      }
-      tb.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (isMobile()) {
-          setSidebarOpen(!sidebar.classList.contains('open'));
-        } else {
-          sidebar.classList.toggle('sidebar-collapsed');
-          document.body.classList.toggle('sidebar-collapsed', sidebar.classList.contains('sidebar-collapsed'));
-          try { localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('sidebar-collapsed')); } catch (_) {}
-        }
-      });
-      if (overlay) {
-        overlay.addEventListener('click', function () { setSidebarOpen(false); });
-      }
-      sidebar.querySelectorAll('.nav-item').forEach(function (item) {
-        item.addEventListener('click', function () { if (isMobile()) setSidebarOpen(false); });
-      });
-    }
 
     // Animate counters after render
     requestAnimationFrame(animateCounters);

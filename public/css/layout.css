@@ -101,6 +101,19 @@
   --skeleton-base: #E2E8F0;
   --skeleton-shine: #F1F5F9;
 
+  /* --- Body Background (inner elements on white canvas) --- */
+  --body-bg: var(--bg);
+
+  /* --- Login / Auth Page Variables --- */
+  --surface: #FFFFFF;
+  --surface-hover: #F8FAFC;
+  --border-light: rgba(0, 0, 0, 0.08);
+  --muted: #64748B;
+  --text: #0F172A;
+  --primary-soft: rgba(37, 99, 235, 0.08);
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 12px;
+
   /* --- Legacy (maintain compatibility) --- */
   --teal: #3B82F6;
   --teal-light: #60A5FA;
@@ -262,20 +275,6 @@ img {
   overflow: hidden;
   background: var(--bg);
   position: relative;
-}
-
-.main-panel {
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.page-content {
-  width: 100%;
-  overflow-x: hidden;
-  padding-bottom: 24px;
 }
 
 /* ============================================================
@@ -921,6 +920,7 @@ body.sidebar-collapsed .main-panel {
   padding-bottom: 40px;
   min-width: 0;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .page-content > *:last-child {
@@ -939,6 +939,8 @@ body.sidebar-collapsed .main-panel {
   gap: 16px;
 }
 
+/* Spinner alias — used by page templates and api.js showSpinner() */
+.spinner,
 .page-loader-spinner {
   width: 40px;
   height: 40px;
@@ -1081,16 +1083,63 @@ body.sidebar-collapsed .main-panel {
    12. Dashboard Page Overrides
    ============================================================ */
 
-/* Hide entire page-header on dashboards (hero card replaces it) */
+/* Dashboard page-header: transparent overlay on top of hero */
 body[data-page$="-dashboard"] .page-header,
 body[data-page="admin"] .page-header {
-  display: none;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body[data-page$="-dashboard"] .page-header .sidebar-toggle-btn,
+body[data-page="admin"] .page-header .sidebar-toggle-btn {
+  background: rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page$="-dashboard"] .page-header .sidebar-toggle-btn:hover,
+body[data-page="admin"] .page-header .sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+body[data-page$="-dashboard"] .page-header .notification-btn,
+body[data-page="admin"] .page-header .notification-btn {
+  background: rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page$="-dashboard"] .page-header .notification-btn:hover,
+body[data-page="admin"] .page-header .notification-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
 }
 
 /* No top padding on dashboard page content */
 body[data-page$="-dashboard"] .page-content,
 body[data-page="admin"] .page-content {
   padding-top: 0;
+}
+
+/* Hide title group on dashboards (hero has its own greeting) */
+body[data-page$="-dashboard"] .page-header-title-group,
+body[data-page="admin"] .page-header-title-group {
+  display: none;
 }
 
 /* Hero action button for toggle/bell — glass floating style */
