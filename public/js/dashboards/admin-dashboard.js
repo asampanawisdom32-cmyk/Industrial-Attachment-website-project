@@ -186,7 +186,7 @@ async function loadAdminDashboard() {
       '</div>' +
 
       // ===== STATS =====
-      '<div class="grid grid-4" style="grid-template-columns:repeat(5,1fr)">' +
+      '<div class="grid admin-stats-grid">' +
         statCard(totalStudents, 'Total Students', 'Enrolled in the program', 'stat-card-accent-total', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', 'animate-in-d1') +
         statCard(activeStudents, 'Active Placements', 'Currently on attachment', 'stat-card-accent-active-placement', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>', 'animate-in-d2') +
         statCard(pendingPlacements, 'Pending Placement', 'Awaiting assignment', 'stat-card-accent-pending', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>', 'animate-in-d3') +

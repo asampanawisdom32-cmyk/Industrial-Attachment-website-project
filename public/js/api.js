@@ -314,7 +314,7 @@ function skAdminPanel() {
   // Tab bar
   html += '<div style="display:flex;gap:8px;margin-bottom:24px;border-bottom:2px solid var(--border);padding-bottom:0">';
   for (var i = 0; i < 4; i++) {
-    html += '<div class="skeleton skeleton-line" style="width:100px;height:32px;margin:0 0 -2px;border-radius:0;border-bottom:2px solid transparent"></div>';
+    html += '<div class="skeleton skeleton-line" style="width:100px;height:32px;flex-shrink:0;margin:0 0 -2px;border-radius:0;border-bottom:2px solid transparent"></div>';
   }
   html += '</div>';
   // Content area

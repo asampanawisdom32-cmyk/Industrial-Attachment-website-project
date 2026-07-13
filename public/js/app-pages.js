@@ -260,7 +260,7 @@ function renderStudentsList() {
               '<div class="form-row"><label>Attendance (%)</label><input type="number" name="attendance" id="edit-attendance" min="0" max="100" /></div>' +
               '<div class="form-row" style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px">' +
                 '<label style="font-weight:700;margin-bottom:8px;display:block">Supervisor Assignment</label>' +
-                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">' +
+                '<div class="grid-2-responsive">' +
                   '<div><label>School Supervisor</label><select id="edit-school-sup"></select></div>' +
                   '<div><label>Workplace Supervisor</label><select id="edit-workplace-sup"></select></div>' +
                 '</div>' +
@@ -1743,7 +1743,7 @@ function renderProfileView() {
           '<span class="form-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>' +
           'Academic Progress' +
         '</div>' +
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">' +
+        '<div class="grid-2-responsive" style="gap:20px">' +
           '<div>' +
             '<div class="profile-detail-label">Overall Progress</div>' +
             '<div class="profile-progress-row">' +
@@ -2366,7 +2366,7 @@ function renderEvaluationsPage() {
           // Form section
           '<h4 style="margin:0 0 16px;font-size:0.95rem;font-weight:700;color:var(--text-primary)">New Evaluation</h4>' +
           '<form id="eval-form">' +
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">' +
+            '<div class="grid-2-responsive" style="gap:14px">' +
               '<div><label for="eval-category" style="font-weight:600;font-size:0.8rem;display:block;margin-bottom:6px;color:var(--text-primary)">Category *</label>' +
                 '<select id="eval-category" class="form-select-premium" required>' +
                   '<option value="">Select category&hellip;</option>' +
