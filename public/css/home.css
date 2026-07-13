@@ -597,6 +597,12 @@ html { scroll-behavior: smooth; }
 .home-hero-text {
   flex: 1;
   min-width: 0;
+  padding: 32px 28px;
+  border-radius: 20px;
+  background: rgba(8, 14, 26, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .home-hero-badge {
@@ -619,6 +625,7 @@ html { scroll-behavior: smooth; }
   color: #f1f5f9;
   margin: 0 0 16px;
   letter-spacing: -0.03em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .home-hero-text h1 em {
@@ -629,9 +636,10 @@ html { scroll-behavior: smooth; }
 .home-hero-text p {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.70);
   max-width: 540px;
   margin: 0 0 32px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .home-hero-actions {
@@ -782,6 +790,8 @@ html { scroll-behavior: smooth; }
   background: rgba(37,99,235,0.12);
   border: 1px solid rgba(37,99,235,0.18);
   margin-bottom: 16px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .home-section-title {
@@ -792,15 +802,17 @@ html { scroll-behavior: smooth; }
   color: #f1f5f9;
   margin: 0 0 12px;
   letter-spacing: -0.02em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
 .home-section-subtitle {
   font-size: 1rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.55);
   margin: 0 0 48px;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ── Features Grid ── */
@@ -814,10 +826,12 @@ html { scroll-behavior: smooth; }
 .home-feature-card {
   padding: 32px 28px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .home-feature-card:hover {
@@ -853,7 +867,7 @@ html { scroll-behavior: smooth; }
 
 .home-feature-card p {
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.60);
   line-height: 1.6;
   margin: 0;
 }
@@ -893,7 +907,7 @@ html { scroll-behavior: smooth; }
 
 .home-stat-label {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.60);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 600;
@@ -914,11 +928,13 @@ html { scroll-behavior: smooth; }
   max-width: 280px;
   padding: 32px 24px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
   text-align: center;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .home-step:hover {
@@ -953,7 +969,7 @@ html { scroll-behavior: smooth; }
 
 .home-step p {
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.60);
   line-height: 1.6;
   margin: 0;
 }
@@ -991,6 +1007,12 @@ html { scroll-behavior: smooth; }
   position: relative;
   max-width: 600px;
   margin: 0 auto;
+  padding: 40px 32px;
+  border-radius: 24px;
+  background: rgba(8, 14, 26, 0.40);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .home-cta-content h2 {
@@ -1001,12 +1023,14 @@ html { scroll-behavior: smooth; }
   color: #f1f5f9;
   margin: 0 0 12px;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .home-cta-content p {
   font-size: 1rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.60);
   margin: 0 0 36px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .home-cta-actions {
