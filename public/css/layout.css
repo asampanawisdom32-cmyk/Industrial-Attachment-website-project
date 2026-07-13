@@ -923,6 +923,14 @@ body.sidebar-collapsed .main-panel {
   overflow-x: hidden;
 }
 
+/* Allow horizontal scroll on mobile */
+@media (max-width: 1024px) {
+  .page-content {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 .page-content > *:last-child {
   margin-bottom: 0;
 }
@@ -1013,6 +1021,7 @@ body.sidebar-collapsed .main-panel {
     border-radius: 0;
     padding: 0 16px;
     overflow-y: visible;
+    overflow-x: auto;
   }
 
   .page-header {
@@ -1044,6 +1053,7 @@ body.sidebar-collapsed .main-panel {
     border-radius: 0;
     padding: 0 12px;
     overflow-y: visible;
+    overflow-x: auto;
   }
 
   .sidebar-brand {
@@ -1389,6 +1399,7 @@ h3 { font-size: clamp(1.05rem, 1.5vw, 1.375rem); }
     padding: 0 12px;
     max-height: none;
     overflow-y: visible;
+    overflow-x: auto;
   }
 
   .page-header {
