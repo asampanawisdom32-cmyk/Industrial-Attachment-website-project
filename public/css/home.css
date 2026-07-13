@@ -434,8 +434,8 @@ html { scroll-behavior: smooth; }
   z-index: 100;
   padding: 16px 24px;
   background: rgba(8,14,26,0.80);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
@@ -1135,8 +1135,8 @@ html { scroll-behavior: smooth; }
     right: 0;
     flex-direction: column;
     background: rgba(10, 22, 40, 0.97);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     padding: 12px 20px 20px;
     gap: 4px;
     border-bottom: 1px solid rgba(255,255,255,0.08);

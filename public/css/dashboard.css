@@ -124,8 +124,8 @@
   padding: 6px 14px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.20);
   font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
@@ -2194,8 +2194,8 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: rgba(255,255,255,0.9);
   border: 1px solid rgba(255,255,255,0.15);
 }
@@ -2387,8 +2387,8 @@
   inset: 0;
   z-index: 1000;
   background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4110,8 +4110,8 @@ input[type="range"]::-webkit-slider-thumb {
   font-size: 0.85rem;
   font-family: 'Inter', sans-serif;
   flex-shrink: 0;
-  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .user-info {
@@ -4295,8 +4295,8 @@ input[type="range"]::-webkit-slider-thumb {
 /* Glass polish on hero tag */
 .hero-tag {
   background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
