@@ -298,7 +298,11 @@ img {
 }
 
 /* Sidebar collapsed */
-.sidebar-collapsed .sidebar {
+.sidebar.sidebar-collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+body.sidebar-collapsed .sidebar {
   width: var(--sidebar-collapsed-width);
 }
 
@@ -651,7 +655,8 @@ img {
   min-width: 0;
 }
 
-.sidebar-collapsed .main-panel {
+.sidebar-collapsed .main-panel,
+body.sidebar-collapsed .main-panel {
   margin-left: calc(var(--sidebar-collapsed-width) + 20px);
 }
 

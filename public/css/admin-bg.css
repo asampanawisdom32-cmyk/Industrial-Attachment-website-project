@@ -204,16 +204,66 @@
   background: transparent;
 }
 
+.admin-bg-wrap ~ .app-shell .sidebar,
+.admin-particles ~ .app-shell .sidebar {
+  background: rgba(4, 10, 20, 0.95);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.admin-bg-wrap ~ .app-shell .page-header,
+.admin-particles ~ .app-shell .page-header {
+  background: transparent;
+}
+
+.admin-bg-wrap ~ .app-shell .sidebar-toggle-btn,
+.admin-particles ~ .app-shell .sidebar-toggle-btn,
+.admin-bg-wrap ~ .app-shell .notification-btn,
+.admin-particles ~ .app-shell .notification-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #E2E8F0;
+}
+
+.admin-bg-wrap ~ .app-shell .sidebar-toggle-btn:hover,
+.admin-particles ~ .app-shell .sidebar-toggle-btn:hover,
+.admin-bg-wrap ~ .app-shell .notification-btn:hover,
+.admin-particles ~ .app-shell .notification-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.admin-bg-wrap ~ .app-shell .notification-dropdown,
+.admin-particles ~ .app-shell .notification-dropdown {
+  background: rgba(15, 25, 45, 0.95);
+  border-color: rgba(255, 255, 255, 0.10);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
 .admin-bg-wrap ~ .app-shell .main-panel,
 .admin-particles ~ .app-shell .main-panel {
-  background: var(--canvas);
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 12px 40px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: rgba(10, 22, 40, 0.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 12px 40px rgba(0, 0, 0, 0.20), 0 4px 12px rgba(0, 0, 0, 0.12);
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --card-bg: rgba(15, 25, 45, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --stat-bg: rgba(15, 25, 45, 0.7);
+  --input-bg: rgba(15, 25, 45, 0.6);
+  --border: rgba(255, 255, 255, 0.08);
 }
 
 /* Mobile: ensure app-shell is interactive over background */
 @media (max-width: 1024px) {
   .admin-bg-wrap ~ .app-shell .main-panel,
   .admin-particles ~ .app-shell .main-panel {
+    background: rgba(10, 22, 40, 0.92);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     box-shadow: none;
   }
 }

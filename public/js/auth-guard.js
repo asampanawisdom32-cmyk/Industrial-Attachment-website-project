@@ -191,6 +191,7 @@ function initSidebarToggle() {
   // Restore saved state on page load (desktop only)
   if (!isMobile() && localStorage.getItem('sidebarCollapsed') === 'true') {
     sidebar.classList.add('sidebar-collapsed');
+    document.body.classList.add('sidebar-collapsed');
   }
 
   if (!toggle) return;
@@ -201,6 +202,7 @@ function initSidebarToggle() {
       setSidebarOpen(!sidebar.classList.contains('open'));
     } else {
       sidebar.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-collapsed', sidebar.classList.contains('sidebar-collapsed'));
       localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('sidebar-collapsed'));
     }
   });
