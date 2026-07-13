@@ -5,7 +5,7 @@
 
 /* ── Reset for standalone page ── */
 .home-page {
-  background: #080e1a;
+  background: rgba(8,14,26,0.6);
   color: #e2e8f0;
   overflow-x: hidden;
 }
@@ -30,8 +30,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(8,14,26,0.92) 0%, rgba(8,14,26,0.70) 50%, rgba(8,14,26,0.92) 100%),
-    radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 60%);
+    linear-gradient(180deg, rgba(8,14,26,0.35) 0%, rgba(8,14,26,0.20) 50%, rgba(8,14,26,0.40) 100%),
+    radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%);
 }
 
 @keyframes homeBgParallax {
