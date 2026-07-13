@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm --prefix client install && npm --prefix client run build",
+    "build": "cd client && npm install --include=dev && npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "start": "node app.js",
