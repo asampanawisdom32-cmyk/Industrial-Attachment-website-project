@@ -1,0 +1,16 @@
+node_modules/
+.env
+serviceAccountKey.json
+*.log
+.DS_Store
+# Session files
+sessions/
+# IDE / OS artifacts
+.vscode/
+.idea/
+Thumbs.db
+nul
+# Build output (rebuilt on deploy)
+client/dist/
+client/node_modules/
+.firebase/

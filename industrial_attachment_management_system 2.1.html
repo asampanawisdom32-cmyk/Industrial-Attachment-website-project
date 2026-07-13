@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="images/campus.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="public/css/style.css">
+  <title>npm start</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #f8fafc;
+      background: #061b33;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 12% 20%, rgba(37, 99, 235, 0.24), transparent 16%),
+                  radial-gradient(circle at 85% 12%, rgba(16, 185, 129, 0.18), transparent 12%),
+                  linear-gradient(180deg, #051226 0%, #08192d 100%);
+      color: #f8fafc;
+    }
+
+    .page-shell {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .panel {
+      position: relative;
+      width: min(1180px, 100%);
+      border-radius: 32px;
+      background: rgba(8, 18, 39, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 40px 90px rgba(0, 0, 0, 0.16), 0 0 40px rgba(56, 189, 248, 0.08);
+      overflow: hidden;
+      animation: slideUpPanel 0.8s ease-out;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+    }
+
+    .panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 50px 120px rgba(0, 0, 0, 0.45);
+    }
+    
+
+    @keyframes slideUpPanel {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 18%, rgba(59, 130, 246, 0.2), transparent 22%),
+                  radial-gradient(circle at 84% 20%, rgba(14, 165, 233, 0.16), transparent 14%),
+                  radial-gradient(circle at 82% 82%, rgba(236, 72, 153, 0.16), transparent 20%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 32px;
+      padding: 44px;
+    }
+
+    .brand-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .brand-logo-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-info {
+      color: #e2e8f0;
+      line-height: 1.2;
+    }
+
+    .brand-info strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .brand-info span {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2.8rem, 4vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+      max-width: 11ch;
+    }
+
+    .hero-copy {
+      margin: 24px 0 30px;
+      color: #cbd5e1;
+      line-height: 1.75;
+      max-width: 680px;
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      color: white;
+      box-shadow: 0 18px 46px rgba(37, 99, 235, 0.28);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .detail-panel {
+      position: relative;
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      z-index: 1;
+    }
+
+    .detail-panel h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #f8fafc;
+    }
+
+    .detail-panel p {
+      margin: 18px 0 0;
+      color: #cbd5e1;
+      line-height: 1.75;
+    }
+
+    .feature-list {
+      margin-top: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      color: #e2e8f0;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .feature-item::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: #22d3ee;
+      flex-shrink: 0;
+    }
+
+    .roles {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .role-chip {
+      display: inline-flex;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.16);
+      color: #eefcff;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid rgba(37, 99, 235, 0.28);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .role-chip:hover,
+    .role-chip:focus-visible {
+      background: rgba(37, 99, 235, 0.22);
+      border-color: rgba(37, 99, 235, 0.4);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        padding: 32px;
+      }
+
+      .detail-panel {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero-grid {
+        padding: 24px;
+      }
+
+      .brand-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .actions {
+        width: 100%;
+      }
+    }
+
+    .footer-bar {
+      width: min(1180px, 100%);
+      margin: 32px auto 0;
+      padding: 32px 34px;
+      border-radius: 32px;
+      background: rgba(8, 18, 39, 0.72);
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.16);
+      display: grid;
+      gap: 18px;
+    }
+
+    .footer-bar h2 {
+      margin: 0;
+      color: #eefcff;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-bar .footer-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-bar p,
+    .footer-bar a {
+      margin: 0;
+      color: #cbd5e1;
+      text-decoration: none;
+      line-height: 1.8;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-bar p strong {
+      color: #ffffff;
+    }
+
+    .footer-bar a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bar .icon {
+      display: inline-flex;
+      width: 1.6rem;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 780px) {
+      .footer-bar {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+  <body class="homepage">
+  <main class="page-shell">
+    <section class="panel">
+      <div class="hero-grid">
+        <div>
+          <div class="brand-bar">
+            <div class="brand-logo"><img src="images/logo.png" alt="BOLGATANGA TECHNICAL UNIVERSITY logo" class="brand-logo-img"></div>
+            <div class="brand-info">
+              <strong>BOLGATANGA TECHNICAL UNIVERSITY</strong>
+              <span>Industrial Attachment Management System</span>
+            </div>
+          </div>
+
+          <h1 class="hero-title">Manage every attachment with confidence and clarity.</h1>
+          <p class="hero-copy">This platform supports administrators, school supervisors, workplace supervisors, and students with role-based access to reports, attendance tracking, placement progress, and supervision workflows.</p>
+
+          <div class="actions">
+            <a class="button primary" href="/signup">Get Started</a>
+            <a class="button secondary" href="#about">Learn More</a>
+          </div>
+        </div>
+
+        <div class="detail-panel" id="about">
+          <h2>What this system does</h2>
+          <p>It centralizes the attachment lifecycle so your institution can coordinate placements, collect student progress, and review supervisor feedback from one modern dashboard.</p>
+          <div class="feature-list">
+            <div class="feature-item">Assign and monitor students to both school and workplace supervisors.</div>
+            <div class="feature-item">Submit and review attachment reports securely.</div>
+            <div class="feature-item">Track attendance, progress, and placement status in real time.</div>
+            <div class="feature-item">Provide each role with a tailored workflow and secure login experience.</div>
+          </div>
+          <div class="roles">
+            <div class="role-chip">Admin</div>
+            <div class="role-chip">School Supervisor</div>
+            <div class="role-chip">Workplace Supervisor</div>
+            <div class="role-chip">Student</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer-bar">
+      <div class="footer-group">
+        <h2>Contact</h2>
+      </div>
+      <div class="footer-group">
+        <p><span class="icon">🏛️</span><strong>Bolgatanga Technical University</strong></p>
+        <p><span class="icon">📬</span>Post Office Box 767, Sumburungu, Bolgatanga, Ghana, West Africa</p>
+        <p><span class="icon">📞</span><a href="tel:+2330382097551">+233 0382097551</a></p>
+        <p><span class="icon">✉️</span><a href="mailto:registrar@bolgatu.edu.gh">registrar@bolgatu.edu.gh</a></p>
+        <p><span class="icon">📍</span>GHPost GPS Address: <strong>UB-0964-8505</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="public/js/hero.js" defer></script>
+</body>
+</html>

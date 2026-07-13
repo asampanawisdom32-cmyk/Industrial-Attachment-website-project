@@ -1,0 +1,69 @@
+<%- include('../partials/header', { title: 'Workplace Supervisor Dashboard', page: 'workplace-supervisor-dashboard' }) %>
+
+<div id="dashboard-root" data-role="workplace_supervisor" data-page-root>
+
+  <!-- Workplace Supervisor Stats Grid (matching admin style with colored top accent bar) -->
+  <div class="admin-stats-grid" id="wp-stats">
+    <div class="admin-stat-card primary">
+      <div class="admin-stat-value" id="wp-students">—</div>
+      <div class="admin-stat-label">Assigned Students</div>
+    </div>
+    <div class="admin-stat-card teal">
+      <div class="admin-stat-value" id="wp-pending">—</div>
+      <div class="admin-stat-label">Pending Reports</div>
+    </div>
+    <div class="admin-stat-card gold">
+      <div class="admin-stat-value" id="wp-attendance">—</div>
+      <div class="admin-stat-label">Avg Attendance</div>
+    </div>
+    <div class="admin-stat-card blue">
+      <div class="admin-stat-value" id="wp-feedback">—</div>
+      <div class="admin-stat-label">Needs Feedback</div>
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="analytics-grid">
+    <div class="premium-card">
+      <div class="premium-card-header">
+        <h3>Recent Submissions</h3>
+        <a href="/reports" class="section-link">All Reports →</a>
+      </div>
+      <div class="premium-card-body">
+        <div class="activity-list" id="wp-activity">
+          <div class="activity-item">
+            <div class="activity-dot teal"></div>
+            <div class="activity-content">
+              <div class="activity-text">Your dashboard is ready — student submissions will appear here.</div>
+              <div class="activity-time">Just now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="premium-card">
+      <div class="premium-card-header">
+        <h3>Quick Actions</h3>
+      </div>
+      <div class="premium-card-body">
+        <div class="quick-actions" style="flex-direction:column;">
+          <button class="quick-action-btn" onclick="window.location.href='/students'" style="width:100%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            View Students
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='/evaluations'" style="width:100%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Evaluate Students
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='/reports'" style="width:100%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Review Reports
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

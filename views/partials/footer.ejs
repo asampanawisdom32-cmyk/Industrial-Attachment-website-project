@@ -1,0 +1,44 @@
+      </section>
+    </main>
+  </div>
+
+  <!-- Core scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/auth-guard.js"></script>
+  <script src="/js/app-pages.js"></script>
+
+  <!-- Admin premium animations (admin pages only) -->
+  <script>
+    (function() {
+      var page = document.body && document.body.dataset.page;
+      if (['admin-dashboard', 'admin', 'students', 'reports', 'evaluations', 'analytics', 'profile', 'supervisors'].indexOf(page) !== -1) {
+        var s = document.createElement('script');
+        s.src = '/js/admin-animations.js';
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
+
+  <!-- Role-specific scripts loaded on-demand via data-page attribute -->
+  <script>
+    (function() {
+      var page = document.body && document.body.dataset.page;
+      var scripts = {
+        'admin': '/js/admin.js',
+        'admin-dashboard': '/js/dashboards/admin-dashboard.js',
+        'student-dashboard': '/js/dashboards/student-dashboard.js',
+        'school-supervisor-dashboard': '/js/dashboards/supervisor-dashboard.js',
+        'workplace-supervisor-dashboard': '/js/dashboards/supervisor-dashboard.js',
+        'supervisors': '/js/supervisors.js',
+      };
+      var src = scripts[page];
+      if (src) {
+        var s = document.createElement('script');
+        s.src = src;
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>
