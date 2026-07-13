@@ -166,6 +166,12 @@ function initSidebarToggle() {
 
   function isMobile() { return window.innerWidth <= 1024; }
 
+  function setSidebarOpen(isOpen) {
+    sidebar.classList.toggle('open', isOpen);
+    if (overlay) overlay.classList.toggle('active', isOpen);
+    document.body.classList.toggle('sidebar-open', isOpen && isMobile());
+  }
+
   // Restore saved state on page load (desktop only)
   if (!isMobile() && localStorage.getItem('sidebarCollapsed') === 'true') {
     sidebar.classList.add('sidebar-collapsed');
@@ -176,8 +182,7 @@ function initSidebarToggle() {
   toggle.addEventListener('click', function (e) {
     e.stopPropagation();
     if (isMobile()) {
-      sidebar.classList.toggle('open');
-      if (overlay) overlay.classList.toggle('active');
+      setSidebarOpen(!sidebar.classList.contains('open'));
     } else {
       sidebar.classList.toggle('sidebar-collapsed');
       localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('sidebar-collapsed'));
@@ -187,10 +192,23 @@ function initSidebarToggle() {
   // Close mobile sidebar when overlay is clicked
   if (overlay) {
     overlay.addEventListener('click', function () {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
+      setSidebarOpen(false);
     });
   }
+
+  document.querySelectorAll('.nav-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+      if (isMobile()) {
+        setSidebarOpen(false);
+      }
+    });
+  });
+
+  window.addEventListener('resize', function () {
+    if (!isMobile()) {
+      setSidebarOpen(false);
+    }
+  });
 }/**
  * Theme toggle — switches between light and dark mode.
  * State persisted in localStorage.

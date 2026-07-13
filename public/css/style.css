@@ -6,6 +6,7 @@
 /* ===== Login Page Wrapper ===== */
 .login-page {
   min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   background: var(--bg);
@@ -221,6 +222,7 @@
   padding: 44px 40px 36px;
   border-radius: var(--radius-xl);
   width: min(100%, 420px);
+  max-width: 100%;
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-light);
   position: relative;
@@ -1090,6 +1092,19 @@
 
   .login-feature {
     font-size: 0.78rem;
+  }
+
+  .login-card,
+  .error-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 18px 20px;
+  }
+
+  .premium-input-wrap input,
+  .premium-input-wrap select,
+  .premium-input-wrap textarea {
+    font-size: 16px;
   }
 }
 
